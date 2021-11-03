@@ -2,8 +2,6 @@
 
 You have to freedom to choose  the at home or at the gym workouts.
 
-[3-Exercises.md]("https://github.com/iamllcoolray/fit-tracker/blob/main/guide/3-Exercises.md") has a list of different workouts sorted by muscle groups.
-
 **REMINDER:** Stretch before and after every workout.
 
 ## Monday
