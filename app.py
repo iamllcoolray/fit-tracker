@@ -6,24 +6,14 @@ import streamlit as st
 def read_markdown_file(markdown_file):
     return Path(markdown_file).read_text()
 
+def markdown_expander():
+    expander_titles = ["Nutritional Facts", "Meal Plan", "Exercises", "Exercise Equipment", "Workout Schedule"]
+    markdown_files = ["1-Nutritional-Facts.md", "2-Meal-Plan.md", "3-Exercises.md", "4-Exercise-Equipment.md", "5-Workout-Schedule.md"]
+    for ex_t, md_f in zip(expander_titles, markdown_files):
+        with st.expander(ex_t):
+                md = read_markdown_file("guide/" + md_f)
+                st.markdown(md, unsafe_allow_html=True)
+
 st.title("Fit Tracker")
 
-with st.expander("Nutritional Facts"):
-    nf_md = read_markdown_file("guide/1-Nutritional-Facts.md")
-    st.markdown(nf_md, unsafe_allow_html=True)
-
-with st.expander("Meal Plan"):
-    mp_md = read_markdown_file("guide/2-Meal-Plan.md")
-    st.markdown(mp_md, unsafe_allow_html=True)
-
-with st.expander("Exercises"):
-    e_md = read_markdown_file("guide/3-Exercises.md")
-    st.markdown(e_md, unsafe_allow_html=True)
-
-with st.expander("Exercise Equipment"):
-    ee_md = read_markdown_file("guide/4-Exercise-Equipment.md")
-    st.markdown(ee_md, unsafe_allow_html=True)
-
-with st.expander("Workout Schedule"):
-    ws_md = read_markdown_file("guide/5-Workout-Schedule.md")
-    st.markdown(ws_md, unsafe_allow_html=True)
+markdown_expander()
