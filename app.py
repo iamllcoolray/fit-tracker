@@ -16,5 +16,17 @@ def markdown_expander():
 
 st.title("Fit Tracker")
 
-st.subheader("In-depth Information")
-markdown_expander()
+data_container = st.container()
+with data_container:
+    col1, col2 = st.columns(2)
+    
+    with col1:
+        st.subheader("User Input")
+    
+    with col2:
+        st.subheader("Graphs")
+
+info_container = st.container()
+with info_container:
+    st.subheader("In-depth Information")
+    markdown_expander()
