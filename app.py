@@ -45,15 +45,22 @@ with data_container:
         
         lose_weight = ""
         gain_weight = ""
+        approx_duration = 0
 
         if fitness_goal == "Lose Weight/Body Fat":
             st.subheader("How much weight do you want to lose in a week?")
             lose_weight = st.radio("Weight", ("1lbs", "2lbs"))
+
+            st.subheader("What is your ideal weight?")
+            ideal_weight = st.slider("Ideal Weight", 100, total_weight)
         elif fitness_goal == "Maintain Current Weight":
             pass
         elif fitness_goal == "Build Muscle":
             st.subheader("How much weight do you want to gain in a week?")
             gain_weight = st.radio("Weight", ("1lbs", "2lbs"))
+
+            st.subheader("What is your ideal weight?")
+            ideal_weight = st.slider("Ideal Weight", total_weight, 400)
     
     with col2:
         st.header("Your Results")
@@ -79,14 +86,22 @@ with data_container:
 
         if lose_weight == "1lbs":
             caloric_intake -= 500
+            approx_duration = ((total_weight - ideal_weight) / 1) / 4.34524
         elif lose_weight == "2lbs":
             caloric_intake -= 1000
+            approx_duration = ((total_weight - ideal_weight) / 2) / 4.34524
         elif gain_weight == "1lbs":
             caloric_intake += 500
+            approx_duration = ((ideal_weight - total_weight) / 1) / 4.34524
         elif gain_weight == "2lbs":
             caloric_intake += 1000
+            approx_duration = ((ideal_weight - total_weight) / 2) / 4.34524
 
-
+        st.write("Body Fat Percentage: ", round(body_fat), "%")
+        st.write("Basal Metabolic Rate: ", round(bmr))
+        st.write("Caloric Intake: ", round(caloric_intake))
+        if round(approx_duration) > 0:
+            st.write("Approximate Duration: ", round(approx_duration), "month(s)")
 
 info_container = st.container()
 with info_container:
