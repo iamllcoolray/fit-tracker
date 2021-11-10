@@ -21,12 +21,32 @@ with data_container:
     col1, col2 = st.columns(2)
     
     with col1:
-        st.subheader("User Input")
+        st.header("Data Input")
+        
+        st.subheader("How old are you?")
+        age = st.number_input("Age", 13, 130)
+
+        st.subheader("What is your sex?")
+        sex = st.radio("Sex", ("Male", "Female"))
+
+        st.subheader("How tall are you?")
+        feet_height = st.number_input("Feet", 4, 8)
+        inches_height = st.number_input("Inches", 0, 11)
+        total_height = (feet_height * 12) + inches_height
+
+        st.subheader("How much do you weight?")
+        total_weight = st.slider("Weight", 50, 400)
     
     with col2:
-        st.subheader("Graphs")
+        st.header("Your Results")
+        bmi = (total_weight / (total_height**2)) * 703
+        
+        if sex == "Male":
+            body_fat = ((1.2 * bmi) + (0.23 * age)) - 16.2
+        elif sex == "Female":
+            body_fat = ((1.2 * bmi) + (0.23 * age)) - 5.4
 
 info_container = st.container()
 with info_container:
-    st.subheader("In-depth Information")
+    st.header("Additional Information")
     markdown_expander()
