@@ -36,6 +36,24 @@ with data_container:
 
         st.subheader("How much do you weight?")
         total_weight = st.slider("Weight", 50, 400)
+
+        st.subheader("How active are you each day?")
+        activity_level = st.selectbox("Activity Level", ("Sedentary", "Lightly Active", "Moderately Active", "Very Active", "Extremely Active"))
+
+        st.subheader("What is your fitness goal?")
+        fitness_goal = st.radio("Fitness Goal", ("Lose Weight/Body Fat", "Maintain Current Weight", "Build Muscle"))
+        
+        lose_weight = ""
+        gain_weight = ""
+
+        if fitness_goal == "Lose Weight/Body Fat":
+            st.subheader("How much weight do you want to lose in a week?")
+            lose_weight = st.radio("Weight", ("1lbs", "2lbs"))
+        elif fitness_goal == "Maintain Current Weight":
+            pass
+        elif fitness_goal == "Build Muscle":
+            st.subheader("How much weight do you want to gain in a week?")
+            gain_weight = st.radio("Weight", ("1lbs", "2lbs"))
     
     with col2:
         st.header("Your Results")
@@ -43,8 +61,32 @@ with data_container:
         
         if sex == "Male":
             body_fat = ((1.2 * bmi) + (0.23 * age)) - 16.2
+            bmr = 66.47 + (6.24 * total_weight) + (12.7 * total_height) - (6.755 * age)
         elif sex == "Female":
             body_fat = ((1.2 * bmi) + (0.23 * age)) - 5.4
+            bmr = 655.1 + (4.35 * total_weight) + (4.7 * total_height) - (4.7 * age)
+
+        if activity_level == "Sedentary":
+            caloric_intake = bmr * 1.2
+        elif activity_level == "Lightly Active":
+            caloric_intake = bmr * 1.375
+        elif activity_level == "Moderately Active":
+            caloric_intake = bmr * 1.55
+        elif activity_level == "Very Active":
+            caloric_intake = bmr * 1.725
+        elif activity_level == "Extremely Active":
+            caloric_intake = bmr * 1.9
+
+        if lose_weight == "1lbs":
+            caloric_intake -= 500
+        elif lose_weight == "2lbs":
+            caloric_intake -= 1000
+        elif gain_weight == "1lbs":
+            caloric_intake += 500
+        elif gain_weight == "2lbs":
+            caloric_intake += 1000
+
+
 
 info_container = st.container()
 with info_container:
