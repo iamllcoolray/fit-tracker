@@ -8,10 +8,9 @@ def read_markdown_file(markdown_file):
 
 
 def markdown_expander():
-    expander_titles = ["Nutritional Facts", "Meal Plan",
-                       "Exercises", "Exercise Equipment", "Workout Schedule"]
-    markdown_files = ["1-Nutritional-Facts.md", "2-Meal-Plan.md",
-                      "3-Exercises.md", "4-Exercise-Equipment.md", "5-Workout-Schedule.md"]
+    expander_titles = ["Nutritional Facts", "Meal Plan", "Workout Schedule"]
+    markdown_files = ["1-Nutritional-Facts.md",
+                      "2-Meal-Plan.md", "3-Workout-Schedule.md"]
     for ex_t, md_f in zip(expander_titles, markdown_files):
         with st.expander(ex_t):
             md = read_markdown_file("guide/" + md_f)
