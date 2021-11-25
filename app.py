@@ -25,6 +25,15 @@ def gaining_weight(pounds):
     return ((ideal_weight - total_weight) / pounds) / 4.34524
 
 
+hide_streamlit_style = """
+<style>
+#MainMenu {visibility: hidden;}
+footer {visibility: hidden;}
+</style>
+
+"""
+st.markdown(hide_streamlit_style, unsafe_allow_html=True)
+
 st.title("Fit Tracker")
 
 with st.sidebar:
