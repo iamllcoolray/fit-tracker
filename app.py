@@ -27,8 +27,7 @@ def gaining_weight(pounds):
 
 st.title("Fit Tracker")
 
-data_container = st.container()
-with data_container:
+with st.sidebar:
 
     st.header("Tracker Entry")
 
