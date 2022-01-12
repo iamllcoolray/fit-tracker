@@ -1,38 +1,61 @@
 # Workout Schedule
 
-You have to freedom to choose  the at home or at the gym workouts.
+**Workout:** 120 mins
+**Cardio:** 25 mins
+
+**Sets:** 3-4
+**Reps:** 8-12
 
 **REMINDER:** Stretch before and after every workout.
 
-## Monday
+## Weekly Schedule
 
-* Hamstrings, Quadriceps, Glutes and Calves Today
-* At Home Workouts or At the Gym Workouts
+### Monday
 
-## Tuesday
+* Upper Body
 
-* Chest, Triceps and Shoulders Today
-* At Home Workouts or At the Gym Workouts
+### Tuesday
 
-## Wednesday
+* Lower Body
 
-* Back, Biceps and Abs Today
-* At Home Workouts or At the Gym Workouts
+### Wednesday
 
-## Thursday
+* Rest/Cardio
 
-* Rest
+### Thursday
 
-## Friday
+* Upper Body
 
-* Hamstrings, Quadriceps, Glutes and Calves Today
-* At Home Workouts or At the Gym Workouts
+### Friday
 
-## Saturday
+* Lower Body
 
-* Intense Cardio and Light Circuit Today
-* At Home Workouts or At the Gym Workouts
+### Saturday
 
-## Sunday
+* Rest/Cardio
 
-* Rest
+### Sunday
+
+* Rest/Cardio
+
+### Upper Body
+
+* Chest
+* Back
+* Traps
+* Front Delts
+* Rear Delts
+* Biceps
+* Triceps
+* Abs
+
+### Lower Body
+
+* Glutes
+* Quadriceps
+* Hamstrings
+* Calves
+
+### Cardio
+
+* Bike or Run
