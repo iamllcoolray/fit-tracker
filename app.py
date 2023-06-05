@@ -1,21 +1,6 @@
-from pathlib import Path
+from tracker.markdown_files import markdown_files
 
 import streamlit as st
-
-
-def read_markdown_file(markdown_file):
-    return Path(markdown_file).read_text()
-
-
-def markdown_expander():
-    expander_titles = ["Nutritional Facts", "Meal Plan", "Workout Schedule"]
-    markdown_files = ["guide/1-Nutritional-Facts.md",
-                      "guide/2-Meal-Plan.md", "guide/3-Workout-Schedule.md"]
-    for ex_t, md_f in zip(expander_titles, markdown_files):
-        with st.expander(ex_t):
-            md = read_markdown_file(md_f)
-            st.markdown(md, unsafe_allow_html=True)
-
 
 def losing_weight(pounds, total_weight, ideal_weight):
     return ((total_weight - ideal_weight) / pounds) / 4.34524
@@ -50,15 +35,7 @@ def caloric_intake_adj(adjusted):
 def caloric_intake_multi(bmr, multiplier):
     return bmr * multiplier
 
-
-hide_streamlit_style = """
-<style>
-#MainMenu {visibility: hidden;}
-footer {visibility: hidden;}
-</style>
-
-"""
-st.markdown(hide_streamlit_style, unsafe_allow_html=True)
+markdown_files.hide_footer()
 
 st.title("Fit Tracker")
 
@@ -111,6 +88,12 @@ results_container = st.container()
 with results_container:
 
     st.header("Personalized Results")
+
+    if lose_weight == "1lbs" or gain_weight == "1lbs":
+        pounds = 1
+    elif lose_weight == "2lbs" or gain_weight =="2lbs":
+        pounds = 2
+
     bmi = bmi(total_weight, total_height)
 
     if sex == "Male":
@@ -132,17 +115,17 @@ with results_container:
         caloric_intake = caloric_intake_multi(bmr, 1.9)
 
     if lose_weight == "1lbs":
-        caloric_intake -= caloric_intake_adj(1)
-        approx_duration = losing_weight(1, total_weight, ideal_weight)
+        caloric_intake -= caloric_intake_adj(pounds)
+        approx_duration = losing_weight(pounds, total_weight, ideal_weight)
     elif lose_weight == "2lbs":
-        caloric_intake -= caloric_intake_adj(2)
-        approx_duration = losing_weight(2, total_weight, ideal_weight)
+        caloric_intake -= caloric_intake_adj(pounds)
+        approx_duration = losing_weight(pounds, total_weight, ideal_weight)
     elif gain_weight == "1lbs":
-        caloric_intake += caloric_intake_adj(1)
-        approx_duration = gaining_weight(1, total_weight, ideal_weight)
+        caloric_intake += caloric_intake_adj(pounds)
+        approx_duration = gaining_weight(pounds, total_weight, ideal_weight)
     elif gain_weight == "2lbs":
-        caloric_intake += caloric_intake_adj(2)
-        approx_duration = gaining_weight(2, total_weight, ideal_weight)
+        caloric_intake += caloric_intake_adj(pounds)
+        approx_duration = gaining_weight(pounds, total_weight, ideal_weight)
 
     col1, col2, col3, col4 = st.columns(4)
 
@@ -156,4 +139,4 @@ with results_container:
 info_container = st.container()
 with info_container:
     st.header("Additional Information")
-    markdown_expander()
+    markdown_files.markdown_expander()
